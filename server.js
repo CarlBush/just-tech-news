@@ -11,6 +11,6 @@ app.use(routes);
 
 
 // force = if true it would drop and recreate all databses tables on startup
-sequelize.sync({ force: false}).then (() => {
+sequelize.sync({ force: false }).then (() => {
     app.listen(PORT, () => console.log ("Now listening"))
 });
