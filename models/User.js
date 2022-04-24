@@ -1,8 +1,10 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
+const bcrypt = require("bcrypt");
+
 // CREATE OUR USER MODEL
-class User extends Model {}
+class User extends Model { }
 
 //DEFINE TABLES COLUMNS AND CONFIG
 
@@ -39,7 +41,7 @@ User.init(
                 isEmail: true
             }
         },
-        password: 
+        password:
         {
             type: DataTypes.STRING,
             allowNull: false,
@@ -49,7 +51,27 @@ User.init(
         }
 
     },
+    //hooks added to the second object
+    //set up beforeCreate lifecycle "hook" functionality
     {
+        //OTHER WAY OF DOING IT
+        //     beforeCreate(userData) {
+        //         return bcrypt.hash(userData.password, 10).then(newUserData => {
+        //           return newUserData
+        //         });
+        // };
+
+        hooks: {
+            async beforeCreate(newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
+            },
+            async beforeUpdate(updatedUserData) {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+            }
+        },
+
         // TABLE CONFIGURATION OPTIONS GO HERE (https://sequelize.org/v5/manual/models-definition.html#configuration))
         sequelize,
         timestamps: false,
@@ -60,3 +82,5 @@ User.init(
 );
 
 module.exports = User;
+
+
