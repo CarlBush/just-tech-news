@@ -1,0 +1,46 @@
+.form-horizontal {
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+    padding: 20px;
+}
+
+.form-control {
+    font-style: italic;
+    font-size: 25px;
+    text-align: center;
+    outline-style: solid;
+    outline-width: 0.5px;
+    border-radius: 4px;
+    margin-top: 20px;
+    color: black;
+}
+
+body {
+    text-align: center;
+    background-image: url(https://hdwallsource.com/img/2015/10/popcorn-wallpaper-47474-49012-hd-wallpapers.jpg);
+    background-size: cover;
+}
+
+button {
+    font-size: 20px;
+    background-color: skyblue;
+    padding: 12px 28px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: skyblue;
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+}
+
+.button {
+    font-size: 15px;
+}
